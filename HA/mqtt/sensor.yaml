@@ -1,0 +1,22 @@
+- object_id: UPS_hum
+  name: "Влажность"
+  state_topic: "battery/health"
+  value_template: "{{ value_json.humidity }}"
+  device_class: humidity
+  unit_of_measurement: "%"
+- object_id: UPS_temp
+  name: "Температура"
+  state_topic: "battery/health"
+  value_template: "{{ value_json.temperature }}"
+  device_class: temperature
+  unit_of_measurement: "°C"
+- object_id: UPS_battery_level
+  name: "Заряд"
+  state_topic: "battery/charge"
+  device_class: battery
+  value_template: "{{ value_json.battery }}"
+  unit_of_measurement: "%"
+- object_id: UPS_AC
+  name: "Наличие 220В"
+  state_topic: "battery/charge"
+  value_template: "{{ 'on' if value_json.power == '1' else 'off' }}"
